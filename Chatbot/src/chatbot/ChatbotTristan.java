@@ -5,7 +5,7 @@ public class ChatbotTristan implements Topic {
 	private String goodbyeKeyword;
 	private String secretKeyword;
 	private String response;
-	
+	//dick
 	public ChatbotTristan() {
 		String[] temp = {"stuff","things","whatever","nothing"};
 		keywords = temp;
@@ -13,7 +13,7 @@ public class ChatbotTristan implements Topic {
 		secretKeyword = "pug";
 		response = "";
 	}
-
+	//like
 	@Override
 	public void talk(String response) {
 		ChatbotMain.print("Hey! So you want to talk about generic boring things, huh? I love talking about that.");
@@ -42,6 +42,6 @@ public class ChatbotTristan implements Topic {
 		}
 		return false;
 	}
-
+ //i 
 
 }
