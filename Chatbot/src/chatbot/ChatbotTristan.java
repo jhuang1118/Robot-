@@ -13,7 +13,7 @@ public class ChatbotTristan implements Topic {
 		secretKeyword = "pug";
 		response = "";
 	}
-	//like
+	//hi
 	@Override
 	public void talk(String response) {
 		ChatbotMain.print("Hey! So you want to talk about generic boring things, huh? I love talking about that.");
