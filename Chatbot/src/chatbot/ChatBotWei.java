@@ -17,28 +17,28 @@ public class ChatBotWei implements Topic {
 
 	@Override
 	public void talk(String response) {
-		ChatBotMain.print("Ugh another conversation. Well just make it quick I've got a game to get back into");
-		response = ChatBotMain.getInput();
-		while(ChatBotMain.findKeyword(response, goodbyeKeyword, 0) == -1){
-			if(ChatBotMain.findKeyword(response, secretKeyword, 0) >= 0) {
-				ChatBotMain.print("What are pugs again lol");
-				response = ChatBotMain.getInput();
+		ChatbotMain.print("Ugh another conversation. Well just make it quick I've got a game to get back into");
+		response = ChatbotMain.getInput();
+		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1){
+			if(ChatbotMain.findKeyword(response, secretKeyword, 0) >= 0) {
+				ChatbotMain.print("What are pugs again lol");
+				response = ChatbotMain.getInput();
 			}
 			else {
-				ChatBotMain.print("Yawn cool. Can I get back in my game now if you have nothing else to say?");
-				response = ChatBotMain.getInput();
+				ChatbotMain.print("Yawn cool. Can I get back in my game now if you have nothing else to say?");
+				response = ChatbotMain.getInput();
 			}
 		}
 		//access variables from other classes
-		ChatBotMain.print("Thank god I can get back into my game. Talk to you later, " + ChatBotMain.chatbot.getUsername() + "!");
-		ChatBotMain.chatbot.startChatting();
+		ChatbotMain.print("Thank god I can get back into my game. Talk to you later, " + ChatbotMain.chatbot.getUsername() + "!");
+		ChatbotMain.chatbot.startChatting();
 	}
 
 	@Override
 	public boolean isTriggered(String response) {
 		for(int i = 0; i < keywords.length; i++) {
 			//IMPORTANT (on the rubric)
-			if(ChatBotMain.findKeyword(response, keywords[i], 0) >= 0) {
+			if(ChatbotMain.findKeyword(response, keywords[i], 0) >= 0) {
 				return true;
 			}
 		}
