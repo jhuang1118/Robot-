@@ -77,7 +77,8 @@ public class ChatbotMain {
 			printString +=currentCut+"\n";
 
 		}
-		System.out.print(printString);
+		System.out.print(printString);.
+		
 	}
 
 	public static int getIntegerInput() {
