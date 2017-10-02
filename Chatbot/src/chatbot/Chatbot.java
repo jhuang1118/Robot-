@@ -30,7 +30,7 @@ public class Chatbot {
 		return tristan;
 	}
 	public void startChatting() {
-		//whenever you print or get input, use these methods..
+		//whenever you print or get input, use these methods...
 		ChatbotMain.print("Hi! I am an intelligent machine that can respond to your inputs. Tell me your name.");
 		username = ChatbotMain.getInput();
 		while(chatting) {
