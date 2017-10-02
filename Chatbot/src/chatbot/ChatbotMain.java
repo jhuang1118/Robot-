@@ -27,10 +27,39 @@ public class ChatbotMain {
 		return -1;
 	}
 	public static boolean keywordIsIsolated(int psn, String keyword, String s){
-		return true;
+		int outOfBounds = -26;
+		String nextChar;
+		s = s.toLowerCase();
+		
+		try {
+			nextChar = s.substring(psn+keyword.length()+1,psn+keyword.length()+2);
+		}catch(Exception x) {
+			nextChar = " ";
+		}
+		
+		if(nextChar.compareTo("z") < outOfBounds) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	public static boolean noNegations(String s, int psn){
+		int secondSpace = psn - 1;
+		int firstSpace = -1;
+		s = s.toLowerCase();
+		
+		for(int i = psn - 1; i > -1; i--) {
+			if(s.substring(i - 1,i).equals(" ")) {
+				firstSpace = i;
+				break;
+			}
+		}
+		
+		if(s.substring(firstSpace + 1, secondSpace).equals("not") || s.substring(firstSpace + 1, secondSpace).equals("no")) {
+			return false;
+		}
+		
 		return true;
 	}
 
@@ -77,7 +106,7 @@ public class ChatbotMain {
 			printString +=currentCut+"\n";
 
 		}
-		System.out.print(printString);.
+		System.out.print(printString);
 		
 	}
 
