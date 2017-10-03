@@ -30,10 +30,10 @@ public class ChatbotMain {
 	public static boolean keywordIsIsolated(int psn, String keyword, String s){
 		int outOfBounds = -26;
 		String nextChar;
-		s = s.toLowerCase();
+		String s1 = s.toLowerCase();
 		
 		try {
-			nextChar = s.substring(psn+keyword.length()+1,psn+keyword.length()+2);
+			nextChar = s1.substring(psn+keyword.length()+1,psn+keyword.length()+2);
 		}catch(Exception x) {
 			nextChar = " ";
 		}

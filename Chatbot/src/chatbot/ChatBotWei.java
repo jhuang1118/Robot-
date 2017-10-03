@@ -13,7 +13,7 @@ public class ChatBotWei implements Topic {
 	private String lastLocation;
 
 	public ChatBotWei() {
-		String[] temp1 = {"rate this", "opinion of", "think of", "think about", "personal thoughts about"};
+		String[] temp1 = {"rate", "opinion of", "think of", "think about", "personal thoughts about"};
 		String[] temp0 = {"london", "sydney", "new york", "los angeles", "seoul", "berlin", "paris", "tokyo"};
 		String[] meat = {"salmon", "chicken", "tuna", "pork", "spare ribs", "lamb", ""};
 		String[] dairy = {"milk", "cheese", "yogurt", "ice cream"};
@@ -59,13 +59,15 @@ public class ChatBotWei implements Topic {
 		//will take in an array with a bunch of ingredients jumbled together
 		int rating = 5;
 		
-		System.out.print("");
-		String location = ChatbotMain.getInput();
+		ChatbotMain.print("Where in the world is " + place + "?");
+		String location = ChatbotMain.getInput().toLowerCase();
+		ChatbotMain.print("What does " + place + " specialize in?");
+		String mainComp =  ChatbotMain.getInput().toLowerCase();
 		
-		for(int i = 0; i < locations.length; i++) {
-			if(locations[i].equals(location)) {
-				String main = ChatbotMain.
-			}		
+		for(int i = 0; i < ingredients.length; i++) {
+			for(int j = 0; j < ingredients[i].length; i++) {
+				
+			}
 		}
 		
 		System.out.print("stuff to say when done with loop");

@@ -33,26 +33,29 @@ package chatbot;
 	
 	public void startChatting() {
 		//whenever you print or get input, use these methods...
-		ChatbotMain.print("Hi! I am an intelligent machine that can respond to your inputs. Tell me your name.");
+		ChatbotMain.print("You must have some guts to start sh*t with me. Why don't you tell me your name?");
 		username = ChatbotMain.getInput();
+		ChatbotMain.print(username + ", huh? Your name smells and looks RAW. What would a person like you want from me?");
 		while(chatting) {
-			ChatbotMain.print("What would you like to talk about?");
 			String response = ChatbotMain.getInput();
 			if(johnson.isTriggered(response)) {
-				chatting = false; //exits the while loop. IMPORTANT you get graded for this!
+				chatting = false;
 				johnson.talk(response);
 			}
-			else {
-				if(tristan.isTriggered(response)) {
-					chatting = false; //exits the while loop. IMPORTANT you get graded for this!
-					tristan.talk(response);
-				}
-			else {
-				ChatbotMain.print("I'm sorry. I don't understand. I never said I was perfect.");
-				}
+			else if(tristan.isTriggered(response)) {
+				chatting = false;
+				tristan.talk(response);
 			}
-	
+			else if(wei.isTriggered(response)){
+				chatting = false;
+				wei.talk(response);
+			}
+			else {
+				ChatbotMain.print("Listen, I don't talk to people who ask me of half-baked things. Ask me something that I can relate to.");
+				response = ChatbotMain.getInput();
+			}	
 		}
+		ChatbotMain.print("");
 	}
 }
 
