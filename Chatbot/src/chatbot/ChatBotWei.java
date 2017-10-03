@@ -3,12 +3,18 @@ package chatbot;
 public class ChatBotWei implements Topic {
 	
 	private String[] keywords;
+	private String[] ingredients;
+	private String[] goodPlace;
+	private String[] goodFood;
+	private String[] badPlace;
+	private String[] badFood;
 	private String goodbyeKeyword;
 	private String secretKeyword;
 	private String response;
+	private int angryLvl = 0;
 
 	public ChatBotWei() {
-		String[] temp = {"sutff","things","whatever","nothing"};
+		String[] temp = {"rate", "your opinion", "you rate", "you think", "your stance"};
 		keywords = temp;
 		goodbyeKeyword = "bye";
 		secretKeyword = "pug";
@@ -17,20 +23,13 @@ public class ChatBotWei implements Topic {
 
 	@Override
 	public void talk(String response) {
-		ChatbotMain.print("Ugh another conversation. Well just make it quick I've got a game to get back into");
+		ChatbotMain.print("Whatever you're asking me to rate, it's probably not going to be good as my restaurant and dishes!");
 		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1){
-			if(ChatbotMain.findKeyword(response, secretKeyword, 0) >= 0) {
-				ChatbotMain.print("What are pugs again lol");
-				response = ChatbotMain.getInput();
-			}
-			else {
-				ChatbotMain.print("Yawn cool. Can I get back in my game now if you have nothing else to say?");
-				response = ChatbotMain.getInput();
-			}
+			
 		}
 		//access variables from other classes
-		ChatbotMain.print("Thank god I can get back into my game. Talk to you later, " + ChatbotMain.chatbot.getUsername() + "!");
+		
 		ChatbotMain.chatbot.startChatting();
 	}
 
@@ -43,6 +42,34 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		return false;
+	}
+	
+	public void rateDish(String[] recipe) {
+		//will take in an array with a bunch of ingredients jumbled together
+		int rating = 5;
+		
+		for(int i = 0; i < recipe.length - 1; i++) {
+			for(int j = i; j < recipe.length; j++) {
+				if(/*meat and dairy*/){
+					getAngry();
+				}
+				if(/*dairy and sauce*/) {
+					getAngry();
+				}
+				if(/**/) {
+					getAngry();
+				}
+				if(/**/) {
+					getAngry();
+				}
+			}
+		}
+		
+		System.out.print("stuff to say when done with loop");
+	}
+	
+	public void getAngry() {
+		angryLvl++;
 	}
 
 }
