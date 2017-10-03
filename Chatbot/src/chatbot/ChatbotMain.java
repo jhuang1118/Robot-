@@ -26,6 +26,7 @@ public class ChatbotMain {
 		}
 		return -1;
 	}
+	
 	public static boolean keywordIsIsolated(int psn, String keyword, String s){
 		int outOfBounds = -26;
 		String nextChar;

@@ -3,21 +3,29 @@ package chatbot;
 public class ChatBotWei implements Topic {
 	
 	private String[] keywords;
-	private String[] ingredients;
-	private String[] goodPlace;
-	private String[] goodFood;
-	private String[] badPlace;
-	private String[] badFood;
+	private String[][] ingredients;
+	private String[] locations;
 	private String goodbyeKeyword;
 	private String secretKeyword;
 	private String response;
-	private int angryLvl = 0;
+	private String mainComponent;
+	private String lastLocation;
 
 	public ChatBotWei() {
-		String[] temp = {"rate", "your opinion", "you rate", "you think", "your stance"};
-		keywords = temp;
+		String[] temp1 = {"rate this", "opinion of", "think of", "think about", "personal thoughts about"};
+		String[] temp0 = {"london", "sydney", "new york", "los angeles", "seoul", "berlin", "paris", "tokyo"};
+		String[] meat = {"salmon", "chicken", "tuna", "pork", "spare ribs", "lamb", ""};
+		String[] dairy = {"milk", "cheese", "yogurt", "ice cream"};
+		String[] veggies = {"carrots", "spinach", "broccoli", "cauliflower", "basil"};
+		String[] fruits = {"apples", "oranges"};
+		String[] flavoring  = {"salt", "pepper", "soy sauce", "vinegar"};
+		String[][] temp2 = {meat, dairy, veggies, fruits, flavoring};
+		
+		keywords = temp1;
+		ingredients = temp2;
+		locations = temp0;
 		goodbyeKeyword = "bye";
-		secretKeyword = "pug";
+		secretKeyword = "roast";
 		response = "";
 	}
 
@@ -26,7 +34,9 @@ public class ChatBotWei implements Topic {
 		ChatbotMain.print("Whatever you're asking me to rate, it's probably not going to be good as my restaurant and dishes!");
 		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1){
-			
+			for(int i = 0; i < response.length(); i++) {
+				
+			}
 		}
 		//access variables from other classes
 		
@@ -44,32 +54,19 @@ public class ChatBotWei implements Topic {
 		return false;
 	}
 	
-	public void rateDish(String[] recipe) {
+	public void rateLocation(String place) {
 		//will take in an array with a bunch of ingredients jumbled together
 		int rating = 5;
 		
-		for(int i = 0; i < recipe.length - 1; i++) {
-			for(int j = i; j < recipe.length; j++) {
-				if(/*meat and dairy*/){
-					getAngry();
-				}
-				if(/*dairy and sauce*/) {
-					getAngry();
-				}
-				if(/**/) {
-					getAngry();
-				}
-				if(/**/) {
-					getAngry();
-				}
-			}
+		String location = ChatbotMain.getInput();
+		
+		for(int i = 0; i < locations.length; i++) {
+			if(locations[i].equals(location)) {
+				dishType
+			}		
 		}
 		
 		System.out.print("stuff to say when done with loop");
 	}
-	
-	public void getAngry() {
-		angryLvl++;
-	}
-
+		
 }
