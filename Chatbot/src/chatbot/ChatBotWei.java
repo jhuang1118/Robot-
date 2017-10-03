@@ -5,6 +5,7 @@ public class ChatBotWei implements Topic {
 	private String[] keywords;
 	private String[][] ingredients;
 	private String[] locations;
+	
 	private String goodbyeKeyword;
 	private String secretKeyword;
 	private String response;
@@ -58,11 +59,12 @@ public class ChatBotWei implements Topic {
 		//will take in an array with a bunch of ingredients jumbled together
 		int rating = 5;
 		
+		System.out.print("");
 		String location = ChatbotMain.getInput();
 		
 		for(int i = 0; i < locations.length; i++) {
 			if(locations[i].equals(location)) {
-				dishType
+				String main = ChatbotMain.
 			}		
 		}
 		
