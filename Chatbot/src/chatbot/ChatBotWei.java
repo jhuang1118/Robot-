@@ -1,7 +1,6 @@
 package chatbot;
 
 public class ChatBotWei implements Topic {
-	
 	private String[] keywords;
 	private String[][] ingredients;
 	private String[] locations;
@@ -41,7 +40,7 @@ public class ChatBotWei implements Topic {
 				}
 			}
 			
-			ChatbotMain.print("Anything else that you would like me to criticize, " + Chatbot.usernmae + "?");
+			ChatbotMain.print("Anything else that you would like me to criticize, " + "?");
 		}
 		//access variables from other classes
 		
@@ -71,22 +70,20 @@ public class ChatBotWei implements Topic {
 		for(int i = 0; i < ingredients.length; i++) {
 			for(int j = 0; j < ingredients[i].length; i++) {
 				if(location.equals("london")){
-					if(mainComp.equals("fish"){
-						ChatbotMain.print("That's rich " + Chatbot.username +, "fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
+					if(mainComp.equals("fish")){
+						ChatbotMain.print("That's rich, "  + "fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
 					}
-					else if (mainComp.equals("milk"){
+					else if (mainComp.equals("milk")){
+						
 						ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
 					}
 					else{
-						ChatbotMain.print("Really? People in London can actually make GOOD things out of " + 
+						ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp  + "?");
 					}
 						
-					}
 				}
 			}
 		}
-		
-		if(rating
 	}
 		
 }
