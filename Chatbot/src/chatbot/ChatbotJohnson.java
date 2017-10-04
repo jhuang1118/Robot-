@@ -66,6 +66,7 @@ public class ChatbotJohnson implements Topic {
 		ChatbotMain.print("What do you want? I'm busy, I have to catch my plane to cook for the Nigerian Prince!");
 		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1) {
+			isTriggered(response);
 			for(int i = 0; i < toTrist.length; i++) {
 				if(ChatbotMain.findKeyword(response, toTrist[i], 0) >= 0) {
 					tristan.talk(response);
@@ -81,7 +82,7 @@ public class ChatbotJohnson implements Topic {
 			angLvl += 3;
 			ChatbotMain.print("Stop talking about things I don't know! Talk about cooking or rating restaurants");
 			response = ChatbotMain.getInput();
-				
+			throwInsult();	
 			if(angLvl == 15) {
 				ChatbotMain.print("You are so stupid! I don't want to talk to you anymore!");
 				ChatbotMain.chatbot.startChatting();
@@ -94,15 +95,7 @@ public class ChatbotJohnson implements Topic {
 		}
 	
 	
-	public boolean isTriggered(String response) {
-		for(int i = 0; i < angWords.length; i++) {
-			//IMPORTANT (on the rubric)
-			if(ChatbotMain.findKeyword(response, angWords[i], 0) >= 0) {
-				return true;
-			}
-		}
-		return false;
-}
+	
 	public void throwInsult() {
 		if(isTriggered(response)) {
 			int choose = (int)(Math.random() * 4) + 1;
@@ -110,8 +103,23 @@ public class ChatbotJohnson implements Topic {
 			for (int i = 0; i < allInsults.length; i++ ) {
 				if(allInsults[i][0].equals(lvl)){
 					ChatbotMain.print(allInsults[i][choose]);
+					angLvl += 3;
 				}
 			}
 		}
+	}
+	public void triggerInsult(){
+		throwInsult();
+	}
+	public boolean isTriggered(String response) {
+	for(int i = 0; i < angWords.length; i++) {
+		//IMPORTANT (on the rubric)
+		if(ChatbotMain.findKeyword(response, angWords[i], 0) >= 0) {
+			
+			return true;
+			
+		}
+	}
+	return false;
 	}
 }
