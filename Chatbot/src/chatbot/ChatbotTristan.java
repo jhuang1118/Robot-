@@ -10,7 +10,7 @@ public class ChatbotTristan implements Topic {
 	private String secretKeyword; 
 	private String response; 
 	public ChatbotTristan() { 
-		String[] temp = {""}; 
+		String[] temp = {"black"}; 
 		keywords = temp; 
 		goodbyeKeyword = "bye"; 
 		secretKeyword = ""; 
