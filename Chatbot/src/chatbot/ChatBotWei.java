@@ -40,6 +40,8 @@ public class ChatBotWei implements Topic {
 					rateLocation(place);
 				}
 			}
+			
+			ChatbotMain.print("Anything else that you would like me to criticize, " + Chatbot.usernmae + "?");
 		}
 		//access variables from other classes
 		
@@ -76,7 +78,7 @@ public class ChatBotWei implements Topic {
 						ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
 					}
 					else{
-						ChatbotMain.print("Really? 
+						ChatbotMain.print("Really? People in London can actually make GOOD things out of " + 
 					}
 						
 					}
@@ -84,7 +86,7 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		
-		System.out.print("");
+		if(rating
 	}
 		
 }
