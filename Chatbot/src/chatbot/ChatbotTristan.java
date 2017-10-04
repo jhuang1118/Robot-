@@ -2,10 +2,10 @@ package chatbot;
 
 public class ChatbotTristan implements Topic { 
 	private String[] keywords;
-	private	String[] Breakfast = {""};
-	private	String[] Lunch = {"pizza","mac n cheese"};
-	private	String[] Dinner = {"chicken"};
-	private	String[] Dessert = {"breakfast", "tart"};
+	private	String[] Breakfast = {"eggs", "hash browns"};
+	private	String[] Lunch = {"pizza","mac n cheese","spaghetti"};
+	private	String[] Dinner = {"chicken","gnocchi","salmon"};
+	private	String[] Dessert = {"tart","brownies"};
 	private String goodbyeKeyword; 
 	private String secretKeyword; 
 	private String response; 
@@ -15,8 +15,7 @@ public class ChatbotTristan implements Topic {
 		goodbyeKeyword = "bye"; 
 		secretKeyword = ""; 
 		response = ""; }
-}
-
+	
 public void talk(String response) {
 	ChatbotMain.print("What do you bloody children want now?");
 	response = ChatbotMain.getInput();
@@ -57,7 +56,7 @@ private void discussBreakfast() {
 	ChatbotMain.print("What breakfast in particular?");
 	response = ChatbotMain.getInput();
 	if(ChatbotMain.findKeyword(response, Breakfast[1], 0) >= 0){
-		ChatbotMain.print("This is how you make eggs");
+		ChatbotMain.print("This is how you make North African eggs.");
 	}
 }
 
@@ -70,12 +69,21 @@ private void discussLunch() {
 	if(ChatbotMain.findKeyword(response, Lunch[2], 0) >= 0) {
 		ChatbotMain.print("This is how you make macaroni cheese and cauliflower bake.");
 	}
+	if(ChatbotMain.findKeyword(response, Lunch[3], 0) >= 0) {
+		ChatbotMain.print("This is how you make cornish seaside sausage spaghetti");
+	}
 }
 
 private void discussDinner() {
 	ChatbotMain.print("What dinner in particular?");
 	response = "ChatbotMain.getInput";
-	if(ChatbotMain.findKeyword(response, Dinner[5], 0) >= 0) {
+	if(ChatbotMain.findKeyword(response, Dinner[1], 0) >= 0) {
+		ChatbotMain.print("This is how you make roasted chicken.");
+	}
+	if(ChatbotMain.findKeyword(response, Dinner[2], 0) >= 0) {
+		ChatbotMain.print("This is how you make homemade gnocchi.");
+	}
+	if(ChatbotMain.findKeyword(response, Dinner[3], 0) >= 0) {
 		ChatbotMain.print("This is how you make roasted chicken.");
 	}
 }
@@ -85,6 +93,12 @@ private void discussDessert() {
 	response = "ChatbotMain.getInput";
 	if(ChatbotMain.findKeyword(response, Dessert[1], 0) >= 0) {
 		ChatbotMain.print("This is how you make mini chocolate tarts with peanut brittle");
+	}
+	if(ChatbotMain.findKeyword(response, Dessert[2], 0) >= 0) {
+		ChatbotMain.print("This is how you make pop power chocolate brownies.");
+	}
+	if(ChatbotMain.findKeyword(response, Dessert[3], 0) >= 0) {
+		ChatbotMain.print("This is how you make ");
 	}
 }
 
@@ -104,4 +118,5 @@ public boolean isTriggered(String response) {
 		}
 	}
 	return false;
+}
 }
