@@ -35,7 +35,7 @@ public class ChatBotWei implements Topic {
 		ChatbotMain.print("Whatever you're asking me to rate, it's probably not going to be good as my restaurant and dishes!");
 		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1){
-			for(int i = 0; i < response.length(); i++) {
+			for(int i = 0; i < keywords.length; i++) {
 				
 			}
 		}
@@ -66,7 +66,9 @@ public class ChatBotWei implements Topic {
 		
 		for(int i = 0; i < ingredients.length; i++) {
 			for(int j = 0; j < ingredients[i].length; i++) {
-				
+				if(mainComp.equals(ingredients[i][j])) {
+					
+				}
 			}
 		}
 		

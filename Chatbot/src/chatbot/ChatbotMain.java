@@ -57,8 +57,13 @@ public class ChatbotMain {
 			}
 		}
 		
-		if(s.substring(firstSpace + 1, secondSpace).equals("not") || s.substring(firstSpace + 1, secondSpace).equals("no")) {
-			return false;
+		try {
+			if(s.substring(firstSpace + 1, secondSpace).equals("not") || s.substring(firstSpace + 1, secondSpace).equals("no")) {
+				return false;
+			}
+		}
+		catch(Exception y) {
+			return true;
 		}
 		
 		return true;
