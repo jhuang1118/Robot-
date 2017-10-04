@@ -93,6 +93,15 @@ public class ChatBotWei implements Topic {
 					if(mainComp.equals("")) {
 						
 					}
+					
+				}
+				else if(location.equals("new york")) {
+					if(mainComp.equals("")) {
+						
+					}
+					else if(mainComp.equals("")) {
+						
+					}
 				}
 				else {
 					ChatbotMain.print("If I've never been there, then the food there's gotta be pretty f**ing sh*tty.");
