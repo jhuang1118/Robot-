@@ -68,8 +68,18 @@ public class ChatBotWei implements Topic {
 		
 		for(int i = 0; i < ingredients.length; i++) {
 			for(int j = 0; j < ingredients[i].length; i++) {
-				if(mainComp.equals(ingredients[i][j])) {
-					
+				if(location.equals("london")){
+					if(mainComp.equals("fish"){
+						ChatbotMain.print("That's rich " + Chatbot.username +, "fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
+					}
+					else if (mainComp.equals("milk"){
+						ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
+					}
+					else{
+						ChatbotMain.print("Really? 
+					}
+						
+					}
 				}
 			}
 		}
