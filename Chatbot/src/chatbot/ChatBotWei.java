@@ -14,12 +14,14 @@ public class ChatBotWei implements Topic {
 	public ChatBotWei() {
 		String[] temp1 = {"rate", "opinion of", "think of", "think about", "personal thoughts about"};
 		String[] temp0 = {"london", "sydney", "new york", "los angeles", "seoul", "berlin", "paris", "tokyo"};
-		String[] meat = {"salmon", "chicken", "tuna", "pork", "spare ribs", "lamb", ""};
+		String[] rice = {"fried", "stirred", "white", "brown", "yellow"};
+		String[] snacks = {"oreo", "chips", "pretzel", "m&m", "sprinkles", "icing"};
+		String[] meat = {"salmon", "chicken", "tuna", "pork", "spare ribs", "lamb"};
 		String[] dairy = {"milk", "cheese", "yogurt", "ice cream"};
 		String[] veggies = {"carrots", "spinach", "broccoli", "cauliflower", "basil"};
 		String[] fruits = {"apples", "oranges"};
 		String[] flavoring  = {"salt", "pepper", "soy sauce", "vinegar"};
-		String[][] temp2 = {meat, dairy, veggies, fruits, flavoring};
+		String[][] temp2 = {meat, dairy, veggies, fruits, flavoring, rice, snacks};
 		
 		keywords = temp1;
 		ingredients = temp2;
@@ -78,9 +80,22 @@ public class ChatBotWei implements Topic {
 						ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
 					}
 					else{
-						ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp  + "?");
+						ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp + "?");
 					}
 						
+				}
+				else if(location.equals("seoul")) {
+					if(mainComp.equals("")) {
+						
+					}
+				}
+				else if(location.equals("berlin")) {
+					if(mainComp.equals("")) {
+						
+					}
+				}
+				else {
+					ChatbotMain.print("If I've never been there, then the food there's gotta be pretty f**ing sh*tty.");
 				}
 			}
 		}
