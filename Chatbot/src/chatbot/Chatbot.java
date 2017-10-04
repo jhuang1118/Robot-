@@ -52,7 +52,6 @@ package chatbot;
 			}
 			else {
 				ChatbotMain.print("Listen, I don't talk to people who ask me of half-baked things. Ask me something that I can relate to.");
-				response = ChatbotMain.getInput();
 			}	
 		}
 		ChatbotMain.print("");

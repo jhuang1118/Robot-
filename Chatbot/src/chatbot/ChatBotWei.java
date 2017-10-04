@@ -32,11 +32,13 @@ public class ChatBotWei implements Topic {
 
 	@Override
 	public void talk(String response) {
-		ChatbotMain.print("Whatever you're asking me to rate, it's probably not going to be good as my restaurant and dishes!");
-		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1){
 			for(int i = 0; i < keywords.length; i++) {
-				
+				if(ChatbotMain.findKeyword(response, keywords[i], 0) >= 0) {
+					ChatbotMain.print("A new restaurant worthy of my criticism? What is it?");
+					String place = ChatbotMain.getInput();
+					rateLocation(place);
+				}
 			}
 		}
 		//access variables from other classes
@@ -72,7 +74,7 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		
-		System.out.print("stuff to say when done with loop");
+		System.out.print("");
 	}
 		
 }
