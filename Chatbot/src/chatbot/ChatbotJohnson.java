@@ -98,7 +98,7 @@ public class ChatbotJohnson implements Topic {
 		for(int i = 0; i < angWords.length; i++) {
 			//IMPORTANT (on the rubric)
 			if(ChatbotMain.findKeyword(response, angWords[i], 0) >= 0) {
-				return true;//ilikepeepee
+				return true;
 			}
 		}
 		return false;
