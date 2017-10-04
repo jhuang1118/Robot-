@@ -62,7 +62,7 @@ private void discussBreakfast() {
 
 private void discussLunch() {
 	ChatbotMain.print("What lunch in particular?");
-	response = "ChatbotMain.getInput";
+	response = ChatbotMain.getInput();
 	if(ChatbotMain.findKeyword(response, Lunch[1], 0) >= 0) {
 		ChatbotMain.print("This is how you make mozzarella and rosemary pizza.");
 	}
