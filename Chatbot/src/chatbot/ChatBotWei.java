@@ -68,7 +68,7 @@ public class ChatBotWei implements Topic {
 		String location = ChatbotMain.getInput().toLowerCase();
 		ChatbotMain.print("What does " + place + " specialize in?");
 		String mainComp =  ChatbotMain.getInput().toLowerCase();
-		
+		//hi
 		for(int i = 0; i < ingredients.length; i++) {
 			for(int j = 0; j < ingredients[i].length; i++) {
 				if(location.equals("london")){
