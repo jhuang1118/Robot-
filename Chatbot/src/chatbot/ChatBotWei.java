@@ -75,7 +75,7 @@ public class ChatBotWei implements Topic {
 					ChatbotMain.print("That's rich, "  + "fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
 					break;
 				}
-				else if (mainComp.equals("milk")){
+				if (mainComp.equals("milk")){
 					rating -= 3;
 					ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
 					break;
