@@ -70,48 +70,46 @@ public class ChatBotWei implements Topic {
 		String mainComp =  ChatbotMain.getInput().toLowerCase();
 		//hi
 		for(int i = 0; i < ingredients.length; i++) {
-			for(int j = 0; j < ingredients[i].length; j++) {
-				if(location.equals("london")){
-					if(mainComp.equals("fish")){
-						ChatbotMain.print("That's rich, "  + "fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
-						break;
-					}
-					else if (mainComp.equals("milk")){
-						rating -= 3;
-						ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
-						break;
-					}
-					else{
-						rating -=2;
-						ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp + "?");
-						break;
-					}
-						
-				}
-				else if(location.equals("seoul")) {
-					if(mainComp.equals("")) {
-						break;
-					}
-				}
-				else if(location.equals("berlin")) {
-					if(mainComp.equals("")) {
-						break;
-					}
-					
-				}
-				else if(location.equals("new york")) {
-					if(mainComp.equals("")) {
-						break;
-					}
-					else if(mainComp.equals("")) {
-						break;
-					}
-				}
-				else {
-					rating = 0;
-					ChatbotMain.print("If I've never been there, then the food there's gotta be pretty f**ing sh*tty.");
+			if(location.equals("london")){
+				if(mainComp.equals("fish")){
+					ChatbotMain.print("That's rich, "  + "fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
 					break;
 				}
+				else if (mainComp.equals("milk")){
+					rating -= 3;
+					ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
+					break;
+				}
+				else{
+					rating -= 2;
+					ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp + "?");
+					break;
+				}
+					
+			}
+			else if(location.equals("seoul")) {
+				if(mainComp.equals("")) {
+					break;
+				}
+			}
+			else if(location.equals("berlin")) {
+				if(mainComp.equals("")) {
+					break;
+				}
+				
+			}
+			else if(location.equals("new york")) {
+				if(mainComp.equals("")) {
+					break;
+				}
+				else if(mainComp.equals("")) {
+					break;
+				}
+			}
+			else {
+				rating = 0;
+				ChatbotMain.print("If I've never been there, then the food there's gotta be pretty f**ing sh*tty.");
+				break;
 			}
 		}
 		ChatbotMain.print("Overall, I would give " + place + " a " + rating + " out of 5 rating.");
