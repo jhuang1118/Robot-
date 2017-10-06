@@ -1,11 +1,12 @@
 package chatbot;
 	
 	public class Chatbot {
-		private String username;
+		public static  String username;
 		private boolean chatting;
 		private Topic johnson; 
 		private Topic wei;
 		private Topic tristan;
+		public static int angerLvl;
 		
 	public Chatbot() {
 		johnson = new ChatbotJohnson();
@@ -13,9 +14,10 @@ package chatbot;
 		wei = new ChatBotWei();
 		username = "Unknown User";
 		chatting = true;
+		angerLvl = 0;
 	}
 	
-	public String getUsername() {
+	public static String getUsername() {
 		return username;
 	}
 	
@@ -29,6 +31,30 @@ package chatbot;
 	
 	public Topic getTristan() {
 		return tristan;
+	}
+	
+	public static int getAngerLvl() {
+		return angerLvl;
+	}
+	
+	public static void getAngry() {
+		//increments the anger of the bot
+		if(angerLvl + 3 > 15) {
+			angerLvl = 15;
+		}
+		else {
+			angerLvl += 3;
+		}
+	}
+	
+	public static void calmDown(int decrement) {
+		//decrements the anger of the bot
+		if(angerLvl - decrement < 0) {
+			angerLvl = 0;
+		}
+		else {
+			angerLvl -= decrement;
+		}
 	}
 	
 	public void startChatting() {
@@ -57,7 +83,3 @@ package chatbot;
 		ChatbotMain.print("");
 	}
 }
-
-	
-	
-
