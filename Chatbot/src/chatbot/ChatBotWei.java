@@ -12,7 +12,7 @@ public class ChatBotWei implements Topic {
 	private String lastLocation;
 
 	public ChatBotWei() {
-		String[] temp1 = {"rate", "opinion of", "think of", "think about", "personal thoughts about"};
+		String[] temp1 = {"rate","your opinion", "opinion of", "think of", "think about", "your personal thoughts about"};
 		String[] temp0 = {"london", "sydney", "new york", "los angeles", "seoul", "berlin", "paris", "tokyo"};
 		String[] rice = {"fried", "stirred", "white", "brown", "yellow"};
 		String[] snacks = {"oreo", "chips", "pretzel", "m&m", "sprinkles", "icing"};
@@ -68,11 +68,18 @@ public class ChatBotWei implements Topic {
 		String location = ChatbotMain.getInput().toLowerCase();
 		ChatbotMain.print("What does " + place + " specialize in?");
 		String mainComp =  ChatbotMain.getInput().toLowerCase();
+		
+		for(int j = 0; j < ingredients.length; j++) {
+			for(int k = 0; k < ingredients[j].length; k++) {
+				
+			}
+		}
 		//hi
 		for(int i = 0; i < ingredients.length; i++) {
 			if(location.equals("london")){
 				if(mainComp.equals("fish")){
-					ChatbotMain.print("That's rich, "  + "fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
+					Chatbot.calmDown(3);
+					ChatbotMain.print("That's rich, "+ Chatbot.getUsername()  + ", fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
 					break;
 				}
 				else if (mainComp.equals("milk")){
@@ -82,6 +89,7 @@ public class ChatBotWei implements Topic {
 				}
 				else{
 					rating -= 2;
+					Chatbot.calmDown(2);
 					ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp + "?");
 					break;
 				}
