@@ -8,8 +8,9 @@ public class ChatBotWei implements Topic {
 	private String goodbyeKeyword;
 	private String secretKeyword;
 	private String response;
-	private String mainComponent;
 	private String lastLocation;
+	private String lastMainComp;
+	private String mainComponent;
 
 	public ChatBotWei() {
 		String[] temp1 = {"rate","your opinion", "opinion of", "think of", "think about", "your personal thoughts about"};
@@ -28,6 +29,8 @@ public class ChatBotWei implements Topic {
 		locations = temp0;
 		goodbyeKeyword = "bye";
 		secretKeyword = "roast";
+		lastLocation = "";
+		lastMainComp = "";
 		response = "";
 	}
 
@@ -61,7 +64,6 @@ public class ChatBotWei implements Topic {
 	}
 	
 	public void rateLocation(String place) {
-		//will take in an array with a bunch of ingredients jumbled together
 		int rating = 5;
 		
 		ChatbotMain.print("Where in the world is " + place + "?");
@@ -74,56 +76,66 @@ public class ChatBotWei implements Topic {
 				
 			}
 		}
-		//hi
-		for(int i = 0; i < ingredients.length; i++) {
-			if(location.equals("london")){
-				if(mainComp.equals("fish")){
-					Chatbot.calmDown(3);
-					ChatbotMain.print("That's rich, "+ Chatbot.getUsername()  + ", fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
-					break;
-				}
-				else if (mainComp.equals("milk")){
-					rating -= 3;
-					ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
-					break;
-				}
-				else{
-					rating -= 2;
-					Chatbot.calmDown(2);
-					ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp + "?");
-					break;
-				}
-					
-			}
-			else if(location.equals("seoul")) {
-				if(mainComp.equals("")) {
-					break;
+		
+		if(detectDuplicate(location, mainComp)) {
+			if(location.equals("london")) {
+				if(mainComp.equals("milk")) {
+					Chatbot.getAngry();
+					ChatbotMain.print("You idiot, didn't I tell you that you don't f**ing dine milk in London?!");
 				}
 			}
 			else if(location.equals("berlin")) {
-				if(mainComp.equals("")) {
-					break;
-				}
 				
 			}
-			else if(location.equals("new york")) {
-				if(mainComp.equals("")) {
-					break;
-				}
-				else if(mainComp.equals("")) {
-					break;
-				}
-			}
-			else {
-				rating = 0;
-				ChatbotMain.print("If I've never been there, then the food there's gotta be pretty f**ing sh*tty.");
-				break;
+			else if(location.equals("seoul")) {
+				
 			}
 		}
-		ChatbotMain.print("Overall, I would give " + place + " a " + rating + " out of 5 rating.");
-		ChatbotMain.print("Alright anything else you want?");
-		response = ChatbotMain.getInput();
 		
+		if(location.equals("london")){
+			if(mainComp.equals("fish")){
+				Chatbot.calmDown(3);
+				ChatbotMain.print("That's rich, "+ Chatbot.getUsername()  + ", fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
+			}
+			else if (mainComp.equals("milk")){
+				rating -= 3;
+				ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
+			}
+			else{
+				rating -= 2;
+				Chatbot.calmDown(2);
+				ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp + "?");
+			}
+				
+		}
+		else if(location.equals("seoul")) {
+			if(mainComp.equals("")) {
+				
+			}
+		}
+		else if(location.equals("berlin")) {
+			if(mainComp.equals("")) {
+				
+			}
+			
+		}
+		else if(location.equals("new york")) {
+			if(mainComp.equals("")) {
+				
+			}
+			else if(mainComp.equals("")) {
+				
+			}
+		}
+		else {
+			rating = 0;
+			ChatbotMain.print("If I've never been there, then the food there's gotta be pretty f**ing sh*tty.");
+		}
+		ChatbotMain.print("Overall, I would give " + place + " a " + rating + " out of 5 rating.");
+	}
+	
+	public boolean detectDuplicate(String location, String mainComp) {
+		return location.toLowerCase().equals(lastLocation) && mainComp.toLowerCase().equals(lastMainComp);
 	}
 		
 }
