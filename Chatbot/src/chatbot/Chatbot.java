@@ -3,7 +3,7 @@ package chatbot;
 	public class Chatbot {
 		public static  String username;
 		private boolean chatting;
-		private Topic johnson; 
+		private static Topic johnson; 
 		private Topic wei;
 		private Topic tristan;
 		public static int angerLvl;
@@ -21,7 +21,7 @@ package chatbot;
 		return username;
 	}
 	
-	public Topic getJohnson() {
+	public static Topic getJohnson() {
 		return johnson;
 	}
 	
@@ -61,7 +61,6 @@ package chatbot;
 		//whenever you print or get input, use these methods...
 		ChatbotMain.print("You must have some guts to start sh*t with me. Why don't you tell me your name?");
 		username = ChatbotMain.getInput();
-		ChatbotMain.print(username + ", huh? Your name smells and looks RAW. What would a person like you want from me?");
-	
+		johnson.talk("");
 	}
 }
