@@ -6,7 +6,6 @@ public class ChatBotWei implements Topic {
 	private String[] locations;
 	
 	private String goodbyeKeyword;
-	private String secretKeyword;
 	private String response;
 	private String lastLocation;
 	private String lastMainComp;
@@ -31,7 +30,6 @@ public class ChatBotWei implements Topic {
 		ingredients = temp2;
 		locations = temp0;
 		goodbyeKeyword = "no";
-		secretKeyword = "roast";
 		lastLocation = "";
 		lastMainComp = "";
 		response = "";
@@ -50,7 +48,16 @@ public class ChatBotWei implements Topic {
 				}
 			}
 			
-			ChatbotMain.print("Anything else that you would like me to criticize, " + Chatbot.getUsername() + "?");
+			ChatbotMain.print("Anything else that you want, " + Chatbot.getUsername() + "?");
+			response = ChatbotMain.getInput().toLowerCase();
+			
+			if(response.equals("no")) {
+				ChatbotMain.print("bye");
+				System.exit(0);
+			}
+			else if(Chatbot.getTristan().isTriggered(response)) {
+				Chatbot.getTristan().talk(response);
+			}
 		}
 		//access variables from other classes
 		
@@ -88,16 +95,26 @@ public class ChatBotWei implements Topic {
 				}
 			}
 			else if(location.equals("berlin")) {
-				
+				if(mainComp.equals("")) {
+					ChatbotMain.print("");
+				}
 			}
 			else if(location.equals("seoul")) {
-				
+				if(mainComp.equals("salmon")) {
+					Chatbot.getAngry();
+					ChatbotMain.print("Holy s**t, if you want salmon so bad, the toilet bowl in your bathroom is a better place to look than the s**tholes in Seoul.");
+					adjustRating(location, mainComp);
+				}
 			}
 			else if(location.equals("tokyo")) {
-				
+				if(mainComp.equals("")) {
+					ChatbotMain.print("");
+				}
 			}
 			else if(location.equals("new york")) {
-				
+				if(mainComp.equals("")) {
+					
+				}
 			}
 			else if(location.equals("los angeles")) {
 				
@@ -143,8 +160,18 @@ public class ChatBotWei implements Topic {
 				}
 			}
 			else if(location.equals("berlin")) {
-				if(mainComp.equals("")) {
-					
+				if(mainComp.equals("lamb")) {
+					Chatbot.calmDown(3);
+					ChatbotMain.print("An excellent choice you made there. Lamb in Berlin is a gift from God himself.");
+				}
+				else if(mainComp.equals("tuna")) {
+					Chatbot.getAngry();
+					ChatbotMain.print("Berlin tuna is out-of-this world! And so will it's customers for consuming something utterly disgusting.");
+					adjustRating(location, mainComp);
+				}
+				else {
+					adjustRating(location, mainComp);
+					ChatbotMain.print("I mean it's not bad. It's just that it's not the best just like a bunch of other 'restaurants'.");
 				}
 				
 			}
@@ -174,7 +201,7 @@ public class ChatBotWei implements Topic {
 			{
 				rating -= 3;
 			}
-			else if(!mainComp.equals("cheese")) {
+			else if(!mainComp.equals("fish")) {
 				rating -= 2;
 			}
 		}
@@ -182,7 +209,7 @@ public class ChatBotWei implements Topic {
 			if(mainComp.equals("yogurt")) {
 				rating -= 3;
 			}
-			else if(mainComp.equals("cauliflower")) {
+			else if(!mainComp.equals("cauliflower")) {
 				rating -= 2;
 			}
 		}
@@ -190,7 +217,7 @@ public class ChatBotWei implements Topic {
 			if(mainComp.equals("bread")) {
 				rating -= 3;
 			}
-			else if(mainComp.equals("beef")) {
+			else if(!mainComp.equals("beef")) {
 				rating -= 2;
 			}
 		}
@@ -234,6 +261,5 @@ public class ChatBotWei implements Topic {
 				rating -= 2;
 			}
 		}
-	}
-		
+	}	
 }
