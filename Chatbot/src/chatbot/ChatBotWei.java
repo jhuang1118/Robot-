@@ -125,7 +125,7 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		else {
-			lastLocation = location;
+			lastLocation = location; //
 			lastMainComp = mainComp;
 			
 			if(location.equals("london")){
