@@ -4,8 +4,8 @@ package chatbot;
 		public static  String username;
 		private boolean chatting;
 		private static Topic johnson; 
-		private Topic wei;
-		private Topic tristan;
+		private static Topic wei;
+		private static Topic tristan;
 		public static int angerLvl;
 		
 	public Chatbot() {
@@ -25,11 +25,11 @@ package chatbot;
 		return johnson;
 	}
 	
-	public Topic getWei() {
+	public static Topic getWei() {
 		return wei;
 	}
 	
-	public Topic getTristan() {
+	public static Topic getTristan() {
 		return tristan;
 	}
 	
