@@ -2,10 +2,10 @@ package chatbot;
 
 public class ChatbotTristan implements Topic { 
 	private String[] keywords;
-	private	String[] Breakfast = {"eggs", "hash browns"};
+	private	String[] Breakfast = {"eggs", "hash browns","pancakes"};
 	private	String[] Lunch = {"pizza","mac n cheese","spaghetti"};
 	private	String[] Dinner = {"chicken","gnocchi","salmon"};
-	private	String[] Dessert = {"tart","brownies"};
+	private	String[] Dessert = {"tart","brownies","pie"};
 	private String goodbyeKeyword; 
 	private String secretKeyword; 
 	private String response; 
@@ -53,51 +53,53 @@ public void talk(String response) {
 }
 
 private void discussBreakfast() {
-	ChatbotMain.print("What breakfast in particular?");
 	response = ChatbotMain.getInput();
+	if(ChatbotMain.findKeyword(response, Breakfast[0], 0) >= 0){
+		ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/north-african-eggs/");
+	}
 	if(ChatbotMain.findKeyword(response, Breakfast[1], 0) >= 0){
-		ChatbotMain.print("This is how you make North African eggs.");
+		ChatbotMain.print("http://www.independent.co.uk/life-style/food-and-drink/gordon-ramsay-eggs-baked-hash-browns-bacon-recipe-ingredients-cooking-instructions-how-to-make-a7952591.html");
+	}
+	if(ChatbotMain.findKeyword(response, Breakfast[2], 0) >= 0){
+		ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/coconut-pancakes-with-mango-slices-and-lime-syrup/");
 	}
 }
 
 private void discussLunch() {
-	ChatbotMain.print("What lunch in particular?");
 	response = ChatbotMain.getInput();
-	if(ChatbotMain.findKeyword(response, Lunch[1], 0) >= 0) {
+	if(ChatbotMain.findKeyword(response, Lunch[0], 0) >= 0) {
 		ChatbotMain.print("This is how you make mozzarella and rosemary pizza.");
 	}
-	if(ChatbotMain.findKeyword(response, Lunch[2], 0) >= 0) {
-		ChatbotMain.print("This is how you make macaroni cheese and cauliflower bake.");
+	if(ChatbotMain.findKeyword(response, Lunch[1], 0) >= 0) {
+		ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/macaroni-and-cauliflower-bake-with-three-cheeses/");
 	}
-	if(ChatbotMain.findKeyword(response, Lunch[3], 0) >= 0) {
+	if(ChatbotMain.findKeyword(response, Lunch[2], 0) >= 0) {
 		ChatbotMain.print("This is how you make cornish seaside sausage spaghetti");
 	}
 }
 
 private void discussDinner() {
-	ChatbotMain.print("What dinner in particular?");
 	response = "ChatbotMain.getInput";
+	if(ChatbotMain.findKeyword(response, Dinner[0], 0) >= 0) {
+		ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/roast-chicken-with-chickpea-stuffing-and-big-green-salad/");
+	}
 	if(ChatbotMain.findKeyword(response, Dinner[1], 0) >= 0) {
-		ChatbotMain.print("This is how you make roasted chicken.");
+		ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/home-made-gnocchi/");
 	}
 	if(ChatbotMain.findKeyword(response, Dinner[2], 0) >= 0) {
-		ChatbotMain.print("This is how you make homemade gnocchi.");
-	}
-	if(ChatbotMain.findKeyword(response, Dinner[3], 0) >= 0) {
-		ChatbotMain.print("This is how you make roasted chicken.");
+		ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/teriyaki-salmon/");
 	}
 }
 
 private void discussDessert() {
-	ChatbotMain.print("What dessert in particular?");
 	response = "ChatbotMain.getInput";
+	if(ChatbotMain.findKeyword(response, Dessert[0], 0) >= 0) {
+		ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/indulgent-mini-chocolate-tarts-with-peanut-brittle/");
+	}
 	if(ChatbotMain.findKeyword(response, Dessert[1], 0) >= 0) {
-		ChatbotMain.print("This is how you make mini chocolate tarts with peanut brittle");
+		ChatbotMain.print("https://www.gordonramsayrestaurants.com/recipes/worlds-best-brownies/");
 	}
 	if(ChatbotMain.findKeyword(response, Dessert[2], 0) >= 0) {
-		ChatbotMain.print("This is how you make pop power chocolate brownies.");
-	}
-	if(ChatbotMain.findKeyword(response, Dessert[3], 0) >= 0) {
 		ChatbotMain.print("This is how you make ");
 	}
 }
