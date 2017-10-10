@@ -15,7 +15,7 @@ public class ChatbotJohnson implements Topic {
 	
 	private String[] angWords;
 	
-	private int angLvl;
+	
 	
 	private String goodbyeKeyword;
 	
@@ -26,9 +26,9 @@ public class ChatbotJohnson implements Topic {
 	
 	public ChatbotJohnson() {
 		String[] temp0 = {"0","You suck!","Stop acting like an idiot!","You're garbage!","You don't deserve to breathe!"};
-		String[] temp3 = {"3","","","",""};
-		String[] temp6 = {"6","","","",""};
-		String[] temp9 = {"9","","","",""};
+		String[] temp3 = {"3","Just get out of my sight!","I hate talking to you!","I wish you were gone!","Talking to you disgusts me"};
+		String[] temp6 = {"6","Be gone!","Talking to you is making a fool out of myself!","Please disappear!","Talking to you is almost as bad as looking at you!"};
+		String[] temp9 = {"9","Die! Die! Die!","When were idiots allowed to use the Internet?","Oh sorry I almost mistaken you as an idiot! Oh wait, you are one!","You're a clown!"};
 		String[] temp12 = {"12","My grandma can cook better than you and she's dead!","Just jump in the oven! It would make my life a lot easier!","Hey panini head, are you listening to me?","You're a disgrace!"};
 		String[] temp15 = {"15","What are you? An idiot sandwich!","You surprise me. I'm surprised at how bad you are!","You freakin donkey!","Get the hell out of my sight!"};
 		
@@ -48,10 +48,10 @@ public class ChatbotJohnson implements Topic {
 		String[] tempWei = {"rating","rate","restaurant","good food", "bad food"};
 		toWei = tempWei;
 		
-		String[] tempAng = {"forgot","too much","too little","don't have"};
+		String[] tempAng = {"don't like cooking"};
 		angWords = tempAng;
 		
-		angLvl = 0;
+		
 		
 		goodbyeKeyword = "bye";
 		response = "";
@@ -72,11 +72,11 @@ public class ChatbotJohnson implements Topic {
 				wei.talk(response);
 			}
 		} 
-			angLvl += 3;
+			Chatbot.angerLvl += 3;
 			ChatbotMain.print("Stop talking about things I don't know! Talk about cooking or rating restaurants");
 			response = ChatbotMain.getInput();
 			throwInsult();	
-			if(angLvl > 15) {
+			if(Chatbot.angerLvl > 15) {
 				ChatbotMain.print("You are so stupid! I don't want to talk to you anymore!");
 				ChatbotMain.chatbot.startChatting();
 				return;
@@ -84,8 +84,8 @@ public class ChatbotJohnson implements Topic {
 			
 		}
 		//access variables from other classes
-		ChatbotMain.print("How about a thank you, you miserable sucker!");
-		ChatbotMain.chatbot.startChatting();
+		//ChatbotMain.print("How about a thank you, you miserable sucker!");
+		//ChatbotMain.chatbot.startChatting();
 		
 	
 	
@@ -93,14 +93,23 @@ public class ChatbotJohnson implements Topic {
 	public void throwInsult() {
 		if(isTriggered(response)) {
 			int choose = (int)(Math.random() * 4) + 1;
-			String lvl = String.valueOf(angLvl);
+			String lvl = String.valueOf(Chatbot.angerLvl);
 			for (int i = 0; i < allInsults.length; i++ ) {
 				if(allInsults[i][0].equals(lvl)){
 					ChatbotMain.print(allInsults[i][choose]);
-					angLvl += 3;
+					Chatbot.angerLvl += 3;
 				}
 			}
 		}
+		else
+			while(Chatbot.angerLvl <= 15) {
+				Chatbot.angerLvl -= 3;
+			}
+		if(Chatbot.angerLvl < 0) {
+			ChatbotMain.print("Talking to you was better than I expected!");
+		}
+			
+				
 	}
 	public void triggerInsult(){
 		throwInsult();
