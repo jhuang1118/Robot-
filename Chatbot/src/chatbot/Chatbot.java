@@ -3,7 +3,7 @@ package chatbot;
 	public class Chatbot {
 		public static  String username;
 		private boolean chatting;
-		private static Topic johnson; 
+		public static Topic johnson; 
 		private static Topic wei;
 		private static Topic tristan;
 		public static int angerLvl;

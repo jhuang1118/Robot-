@@ -11,23 +11,16 @@ public class ChatBotWei implements Topic {
 	private String lastMainComp;
 	private String lastPlace;
 	private String mainComponent;
+	private Topic johnson;
 	private int rating;
 	
 
 	public ChatBotWei() {
 		String[] temp1 = {"rate","your opinion", "opinion of", "think of", "think about", "your personal thoughts about"};
 		String[] temp0 = {"london", "sydney", "new york", "los angeles", "seoul", "berlin", "paris", "tokyo"};
-		String[] rice = {"fried", "stirred", "white", "brown", "yellow"};
-		String[] snacks = {"oreo", "chips", "pretzel", "m&m", "sprinkles", "icing"};
-		String[] meat = {"salmon", "chicken", "tuna", "pork", "spare ribs", "lamb"};
-		String[] dairy = {"milk", "cheese", "yogurt", "ice cream"};
-		String[] veggies = {"carrots", "spinach", "broccoli", "cauliflower", "basil"};
-		String[] fruits = {"apples", "oranges"};
-		String[] flavoring  = {"salt", "pepper", "soy sauce", "vinegar"};
-		String[][] temp2 = {meat, dairy, veggies, fruits, flavoring, rice, snacks};
+		
 		
 		keywords = temp1;
-		ingredients = temp2;
 		locations = temp0;
 		goodbyeKeyword = "no";
 		lastLocation = "";
@@ -38,6 +31,8 @@ public class ChatBotWei implements Topic {
 
 	@Override
 	public void talk(String response) {
+		johnson = Chatbot.getJohnson();
+		
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1 && Chatbot.angerLvl < 15){
 			for(int i = 0; i < keywords.length; i++) {
 				if(ChatbotMain.findKeyword(response, keywords[i], 0) >= 0) {
@@ -48,7 +43,7 @@ public class ChatBotWei implements Topic {
 				}
 			}
 			
-			ChatbotMain.print("Anything else that you want, " + Chatbot.getUsername() + "?");
+			ChatbotMain.print("Anything else that you want, " + Chatbot.getUsername() + "? (y/n/ other keywords)");
 			response = ChatbotMain.getInput().toLowerCase();
 			
 			if(response.equals("no")) {
@@ -57,6 +52,9 @@ public class ChatBotWei implements Topic {
 			}
 			else if(Chatbot.getTristan().isTriggered(response)) {
 				Chatbot.getTristan().talk(response);
+			}
+			else {
+				
 			}
 		}
 		//access variables from other classes
@@ -90,13 +88,16 @@ public class ChatBotWei implements Topic {
 			if(location.equals("london")) {
 				if(mainComp.equals("milk")) {
 					Chatbot.getAngry();
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
 					ChatbotMain.print("You idiot, didn't I tell you that you don't f**ing dine milk in London?!");
 					adjustRating(location, mainComp);
 				}
 			}
 			else if(location.equals("berlin")) {
-				if(mainComp.equals("")) {
-					ChatbotMain.print("");
+				if(mainComp.equals("tuna")) {
+					Chatbot.getAngry();
+					ChatbotMain.print("The tuna in Berlin is TOO F**KING RAW. It's practically still alive!!");
+					adjustRating(location, mainComp);
 				}
 			}
 			else if(location.equals("seoul")) {
@@ -134,6 +135,7 @@ public class ChatBotWei implements Topic {
 				}
 				else if (mainComp.equals("milk")){
 					adjustRating(location, mainComp);
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
 					Chatbot.getAngry();
 					ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
 				}
