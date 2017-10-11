@@ -250,10 +250,10 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		if(location.equals("sydney")) {
-			if(mainComp.equals("")) {
+			if(mainComp.equals("rice")) {
 				rating -= 3;
 			}
-			else if(mainComp.equals("")) {
+			else if(!mainComp.equals("fish")) {
 				rating -= 2;
 			}
 		}
