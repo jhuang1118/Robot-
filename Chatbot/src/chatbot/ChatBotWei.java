@@ -88,13 +88,12 @@ public class ChatBotWei implements Topic {
 				{
 					new FoodReply("london","milk","You idiot, didn't I tell you that you don't f**ing dine milk in London?!"),
 					new FoodReply("berlin", "tuna", "Maybe tuna is good for you!! It'll help your f**king goldfish memory!!"),
-					new FoodReply("paris", "", ""),
+					new FoodReply("paris", "fish", "Don't make me repeat myself, go fish for an answer yourself if you do!"),
 					new FoodReply("seoul", "salmon", "Holy sh*t if you really want salmon, go fish it out of your toilet bowl, it's better for you!!"),
-					new FoodReply("tokyo", "", ""),
+					new FoodReply("tokyo", "bread", "What is with you and dull bread?! Are dull things just naturally attracted to eachother?!"),
 					new FoodReply("new york", "chicken", "Birdbrain, I told you not to get chicken in New York!!"),
-					new FoodReply("los angeles", "", ""),
+					new FoodReply("los angeles", "pretzals", "Did your brain dry up or something? I told you not to get pretzals in LA!"),
 					new FoodReply("sydney", "rice", "Didn't I tell you not to get rice in Sydney?! Go stick your head inside a kangaroos pouch and beg the joey to get a better brain!!")
-					
 				};
 			
 			for(int i = 0; i < foods.length; i++) {
@@ -125,6 +124,20 @@ public class ChatBotWei implements Topic {
 					lowerRate(location, mainComp, "Really? People in London can actually make GOOD things out of " + mainComp + "?");
 				}
 			}
+			else if(location.equals("paris")) {
+				if(mainComp.equals("bread")) {
+					Chatbot.calmDown();
+					ChatbotMain.print("Bread in Paris? Are you a tourist or something? Either way, good pick there!");
+				}
+				else if(mainComp.equals("fish")) {
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
+					Chatbot.getAngry();
+					lowerRate(location, mainComp, "Of all the things you can eat in Paris, you had to choose their abominable fish?!");
+				}
+				else {
+					lowerRate(location, mainComp, "Yeah, you definitely are a tourist aren't you?");
+				}
+			}
 			else if(location.equals("seoul")) {
 				if(mainComp.equals("chicken")) {
 					Chatbot.calmDown();
@@ -139,19 +152,32 @@ public class ChatBotWei implements Topic {
 					lowerRate(location, mainComp, "A decent pick. At best, you can get the exact same thing from those pitiful free sample stands at supermarkets");
 				}
 			}
+			else if(location.equals("tokyo")) {
+				if(mainComp.equals("sushi")) {
+					Chatbot.calmDown();
+					ChatbotMain.print("The superior item to get, essential for every location to have.");
+				}
+				else if(mainComp.equals("bread")) {
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
+					Chatbot.getAngry();
+					lowerRate(location, mainComp, "Bread in Japan?! What are you doing?!");
+				}
+				else {
+					lowerRate(location, mainComp, "It's OK. I can't comment more on something so mediocre without making it look bad.");
+				}
+			}
 			else if(location.equals("berlin")) {
 				if(mainComp.equals("lamb")) {
 					Chatbot.calmDown();
 					ChatbotMain.print("An excellent choice you made there. Lamb in Berlin is a gift from God himself.");
 				}
 				else if(mainComp.equals("tuna")) {
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
 					Chatbot.getAngry();
-					ChatbotMain.print("Berlin tuna is out-of-this world! And so will it's customers for consuming something utterly disgusting.");
-					adjustRating(location, mainComp);
+					lowerRate(location, mainComp, "Tuna in Berlin? Try the sewers, they've got loads of them.");
 				}
 				else {
-					adjustRating(location, mainComp);
-					ChatbotMain.print("I mean it's not bad. It's just that it's not the best just like a bunch of other 'restaurants'.");
+					lowerRate(location, mainComp, "A regular place, could be better.");
 				}
 				
 			}
@@ -167,6 +193,34 @@ public class ChatBotWei implements Topic {
 				}
 				else {
 					lowerRate(location, mainComp, "Other than beef and chicken, everything else in New York is like the rest of America. Mediocre at best.");
+				}
+			}
+			else if(location.equals("los angeles")) {
+				if(mainComp.equals("hot dogs")) {
+					Chatbot.calmDown();
+					ChatbotMain.print("As garbage as food in America is, I can tolerate hot dogs in LA");
+				}
+				else if(mainComp.equals("pretzals")) {
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
+					Chatbot.getAngry();
+					lowerRate(location, mainComp, "This isn't New York, LA's pretzals are drier than your overcooked steak!");
+				}
+				else {
+					lowerRate(location, mainComp, "Don't really like the place, well, never liked LA much in the first place");
+				}
+			}
+			else if(location.equals("sydney")) {
+				if(mainComp.equals("fish")) {
+					Chatbot.calmDown();
+					ChatbotMain.print("The seafood near Sydney is exquisite. Not top grade, but exquisite nonetheless.");
+				}
+				else if(mainComp.equals("rice")) {
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
+					Chatbot.getAngry();
+					lowerRate(location, mainComp, "The water in the rice in Sydney is practically nonexistant, I'd advise you don't go there.");
+				}
+				else {
+					lowerRate(location, mainComp, "OK at best, could be better");
 				}
 			}
 			else {
@@ -210,7 +264,7 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		if(location.equals("new york")) {
-			if(mainComp.equals("bread")) {
+			if(mainComp.equals("chicken")) {
 				rating -= 3;
 			}
 			else if(!mainComp.equals("beef")) {
@@ -226,26 +280,26 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		if(location.equals("tokyo")) {
-			if(mainComp.equals("")) {
+			if(mainComp.equals("bread")) {
 				rating -= 3;
 			}
-			else if(mainComp.equals("")) {
+			else if(!mainComp.equals("sushi")) {
 				rating -= 2;
 			}
 		}
 		if(location.equals("los angeles")) {
-			if(mainComp.equals("")) {
+			if(mainComp.equals("hot dogs")) {
 				rating -= 3;
 			}
-			else if(mainComp.equals("")) {
+			else if(mainComp.equals("pretzals")) {
 				rating -= 2;
 			}
 		}
-		if(location.equals("london")) {
-			if(mainComp.equals("")) {
+		if(location.equals("paris")) {
+			if(mainComp.equals("fish")) {
 				rating -= 3;
 			}
-			else if(mainComp.equals("")) {
+			else if(!mainComp.equals("bread")) {
 				rating -= 2;
 			}
 		}
