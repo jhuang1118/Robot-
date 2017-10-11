@@ -9,8 +9,6 @@ public class ChatBotWei implements Topic {
 	private String response;
 	private String lastLocation;
 	private String lastMainComp;
-	private String lastPlace;
-	private String mainComponent;
 	private Topic johnson;
 	private int rating;
 	
@@ -22,7 +20,7 @@ public class ChatBotWei implements Topic {
 		
 		keywords = temp1;
 		locations = temp0;
-		goodbyeKeyword = "no";
+		goodbyeKeyword = "bye";
 		lastLocation = "";
 		lastMainComp = "";
 		response = "";
@@ -46,6 +44,11 @@ public class ChatBotWei implements Topic {
 			ChatbotMain.print("Anything else that you want, " + Chatbot.getUsername() + "? (y/n/ other keywords)");
 			response = ChatbotMain.getInput().toLowerCase();
 			
+			if(Chatbot.angerLvl >= 15) {
+				ChatbotMain.print("There's no point in having a conversation if you're not going to listen to what I say.");
+				System.exit(0);
+			}
+			
 			if(response.equals("no")) {
 				ChatbotMain.print("bye");
 				System.exit(0);
@@ -54,15 +57,10 @@ public class ChatBotWei implements Topic {
 				Chatbot.getTristan().talk(response);
 			}
 			else {
-				
+				Chatbot.continueChatting(response);
 			}
 		}
 		//access variables from other classes
-		
-		if(Chatbot.angerLvl >= 15) {
-			ChatbotMain.print("There's no point in having a conversation if you're not going to listen to what I say.");
-			System.exit(0);
-		}
 	}
 
 	@Override
@@ -85,85 +83,65 @@ public class ChatBotWei implements Topic {
 		String mainComp =  ChatbotMain.getInput().toLowerCase();
 		
 		if(detectDuplicate(location, mainComp)) {
-			if(location.equals("london")) {
-				if(mainComp.equals("milk")) {
-					Chatbot.getAngry();
-					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
-					ChatbotMain.print("You idiot, didn't I tell you that you don't f**ing dine milk in London?!");
-					adjustRating(location, mainComp);
-				}
-			}
-			else if(location.equals("berlin")) {
-				if(mainComp.equals("tuna")) {
-					Chatbot.getAngry();
-					ChatbotMain.print("The tuna in Berlin is TOO F**KING RAW. It's practically still alive!!");
-					adjustRating(location, mainComp);
-				}
-			}
-			else if(location.equals("seoul")) {
-				if(mainComp.equals("salmon")) {
-					Chatbot.getAngry();
-					ChatbotMain.print("Holy s**t, if you want salmon so bad, the toilet bowl in your bathroom is a better place to look than the s**tholes in Seoul.");
-					adjustRating(location, mainComp);
-				}
-			}
-			else if(location.equals("tokyo")) {
-				if(mainComp.equals("")) {
-					ChatbotMain.print("");
-				}
-			}
-			else if(location.equals("new york")) {
-				if(mainComp.equals("")) {
+			
+			FoodReply[] foods = 
+				{
+					new FoodReply("london","milk","You idiot, didn't I tell you that you don't f**ing dine milk in London?!"),
+					new FoodReply("berlin", "tuna", "Maybe tuna is good for you!! It'll help your f**king goldfish memory!!"),
+					new FoodReply("paris", "", ""),
+					new FoodReply("seoul", "salmon", "Holy sh*t if you really want salmon, go fish it out of your toilet bowl, it's better for you!!"),
+					new FoodReply("tokyo", "", ""),
+					new FoodReply("new york", "chicken", "Birdbrain, I told you not to get chicken in New York!!"),
+					new FoodReply("los angeles", "", ""),
+					new FoodReply("sydney", "rice", "Didn't I tell you not to get rice in Sydney?! Go stick your head inside a kangaroos pouch and beg the joey to get a better brain!!")
 					
+				};
+			
+			for(int i = 0; i < foods.length; i++) {
+				if(location.equals(foods[i].getLocation())) {
+					if(mainComp.equals(foods[i].getFood())) {
+						flipOut();
+						lowerRate(foods[i].getLocation(), foods[i].getFood(), foods[i].getReply());
+					}
+					break;
 				}
-			}
-			else if(location.equals("los angeles")) {
-				
-			}
-			else if(location.equals("sydney")) {
-				
 			}
 		}
 		else {
-			lastLocation = location; //
+			lastLocation = location;
 			lastMainComp = mainComp;
 			
 			if(location.equals("london")){
 				if(mainComp.equals("fish")){
-					Chatbot.calmDown(3);
+					Chatbot.calmDown();
 					ChatbotMain.print("That's rich, "+ Chatbot.getUsername() + ", fish in London is a delicacy Perhaps I'll go to " + place + "next time I go to London.");
 				}
 				else if (mainComp.equals("milk")){
-					adjustRating(location, mainComp);
 					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
 					Chatbot.getAngry();
-					ChatbotMain.print("What are you doing with your life? Milk in London is garbage");
+					lowerRate(location, mainComp, "What are you doing with your life? Milk in London is garbage");
 				}
 				else{
-					adjustRating(location, mainComp);
-					Chatbot.calmDown(2);
-					ChatbotMain.print("Really? People in London can actually make GOOD things out of " + mainComp + "?");
+					lowerRate(location, mainComp, "Really? People in London can actually make GOOD things out of " + mainComp + "?");
 				}
-					
 			}
 			else if(location.equals("seoul")) {
 				if(mainComp.equals("chicken")) {
-					Chatbot.calmDown(3);
+					Chatbot.calmDown();
 					ChatbotMain.print("Quite a sharp sense of taste you have there. Chicken in Seoul boasts its spicy flavor and is among the best in the world no matter where you go.");
 				}
 				else if(mainComp.equals("salmon")) {
-					adjustRating(location, mainComp);
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
 					Chatbot.getAngry();
-					ChatbotMain.print("Hell is wrong with you?! Salmon in Seoul tastes like salmon from my toilet bowl at home!! Salty and disgusting!!");
+					lowerRate(location, mainComp, "Hell is wrong with you?! Salmon in Seoul tastes like salmon from my toilet bowl at home!! Salty and disgusting!!");
 				}
 				else {
-					adjustRating(location, mainComp);
-					ChatbotMain.print("A decent pick. At best, you can get the exact same thing from those pitiful free sample stands at supermarkets");
+					lowerRate(location, mainComp, "A decent pick. At best, you can get the exact same thing from those pitiful free sample stands at supermarkets");
 				}
 			}
 			else if(location.equals("berlin")) {
 				if(mainComp.equals("lamb")) {
-					Chatbot.calmDown(3);
+					Chatbot.calmDown();
 					ChatbotMain.print("An excellent choice you made there. Lamb in Berlin is a gift from God himself.");
 				}
 				else if(mainComp.equals("tuna")) {
@@ -178,11 +156,17 @@ public class ChatBotWei implements Topic {
 				
 			}
 			else if(location.equals("new york")) {
-				if(mainComp.equals("")) {
-					
+				if(mainComp.equals("beef")) {
+					Chatbot.calmDown();
+					ChatbotMain.print("Normally, I don't eat American food, but beef from New York is almost on point!");
 				}
-				else if(mainComp.equals("")) {
-					
+				else if(mainComp.equals("chicken")) {
+					((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
+					Chatbot.getAngry();
+					lowerRate(location, mainComp, "Do you even know how dirty the birds are in New York?");
+				}
+				else {
+					lowerRate(location, mainComp, "Other than beef and chicken, everything else in New York is like the rest of America. Mediocre at best.");
 				}
 			}
 			else {
@@ -195,6 +179,16 @@ public class ChatBotWei implements Topic {
 	
 	public boolean detectDuplicate(String location, String mainComp) {
 		return location.toLowerCase().equals(lastLocation) && mainComp.toLowerCase().equals(lastMainComp);
+	}
+	
+	public void lowerRate(String location, String mainComp, String responseTxt) {
+		adjustRating(location, mainComp);
+		ChatbotMain.print(responseTxt);
+	}
+	
+	public void flipOut() {
+		((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
+		Chatbot.getAngry();
 	}
 	
 	public void adjustRating(String location, String mainComp) {
@@ -211,7 +205,7 @@ public class ChatBotWei implements Topic {
 			if(mainComp.equals("yogurt")) {
 				rating -= 3;
 			}
-			else if(!mainComp.equals("cauliflower")) {
+			else if(!mainComp.equals("lamb")) {
 				rating -= 2;
 			}
 		}
@@ -224,10 +218,10 @@ public class ChatBotWei implements Topic {
 			}
 		}
 		if(location.equals("seoul")) {
-			if(mainComp.equals("")) {
+			if(mainComp.equals("salmon")) {
 				rating -= 3;
 			}
-			else if(mainComp.equals("")) {
+			else if(!mainComp.equals("chicken")) {
 				rating -= 2;
 			}
 		}
