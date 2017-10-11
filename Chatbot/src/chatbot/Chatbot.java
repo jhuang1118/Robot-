@@ -47,13 +47,13 @@ package chatbot;
 		}
 	}
 	
-	public static void calmDown(int decrement) {
+	public static void calmDown() {
 		//decrements the anger of the bot
-		if(angerLvl - decrement < 0) {
+		if(angerLvl - 3 < 0) {
 			angerLvl = 0;
 		}
 		else {
-			angerLvl -= decrement;
+			angerLvl -= 3;
 		}
 	}
 	
@@ -62,5 +62,22 @@ package chatbot;
 		ChatbotMain.print("You must have some guts to start sh*t with me. Why don't you tell me your name?");
 		username = ChatbotMain.getInput();
 		johnson.talk("");
+	}
+	
+	public static void continueChatting(String response) {
+		if(wei.isTriggered(response)) {
+			wei.talk(response);
+		}
+		else if (tristan.isTriggered(response)){
+			tristan.talk(response);
+		}
+		else if(johnson.isTriggered(response)){
+			johnson.talk(response);
+		}
+		else {
+			ChatbotMain.print("Wanna talk like a normal person with a normal brain and say something that I can understand?");
+			response = ChatbotMain.getInput();
+			continueChatting(response);
+		}
 	}
 }
