@@ -56,6 +56,9 @@ public class ChatBotWei implements Topic {
 			else if(Chatbot.getTristan().isTriggered(response)) {
 				Chatbot.getTristan().talk(response);
 			}
+			else if(Chatbot.getWei().isTriggered(response)) {
+				Chatbot.getWei().talk(response);
+			}
 			else {
 				Chatbot.continueChatting(response);
 			}
@@ -76,7 +79,7 @@ public class ChatBotWei implements Topic {
 	
 	public void rateLocation(String place) {
 		rating = 5;
-		
+		ChatbotMain.print("For the following questions, answer in one word.");
 		ChatbotMain.print("Where in the world is " + place + "?");
 		String location = ChatbotMain.getInput().toLowerCase();
 		ChatbotMain.print("What does " + place + " specialize in?");
