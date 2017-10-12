@@ -12,7 +12,7 @@ public class ChatbotTristan implements Topic {
 	private String response; 
 	
 	public ChatbotTristan() { 
-		String[] temp = {"cooking","cook","recipes","recipe",}; 
+		String[] temp = {"cooking","cook","recipes","recipe","make"}; 
 		keywords = temp; 
 		goodbyeKeyword = "bye"; 
 		response = ""; 
@@ -71,7 +71,7 @@ public class ChatbotTristan implements Topic {
 	private void discussBreakfast(String response) {
 		response = ChatbotMain.getInput().toLowerCase();
 		
-		if(response.equals("eggs")){
+		if(ChatbotMain.findKeyword(response, Breakfast[0], 0) >= 0) {
 			System.out.println("https://www.gordonramsay.com/gr/recipes/north-african-eggs/");
 		}
 		else if(ChatbotMain.findKeyword(response, Breakfast[1], 0) >= 0){
@@ -171,6 +171,9 @@ public class ChatbotTristan implements Topic {
 		if(response.equals("no")) {
 			ChatbotMain.print("Waste of my time.");
 			System.exit(0);
+		}
+		else if (response.equals("yes")) {
+				this.talk(response);
 		}
 	}
 	
