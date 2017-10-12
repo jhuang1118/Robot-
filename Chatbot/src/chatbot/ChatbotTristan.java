@@ -28,32 +28,27 @@ public class ChatbotTristan implements Topic {
 			if(response.equals("breakfast")) {
 				ChatbotMain.print("What breakfast food in particular?");
 				discussBreakfast(response);
-				flipOut();
 			}
 			
 			else if(response.equals("lunch")) {
 				ChatbotMain.print("What lunch food in particular?");
 				discussLunch(response);
-				flipOut();
 			}
 			
 			else if(response.equals("dinner")) {
 				ChatbotMain.print("What dinner food in particular?");
 				discussDinner(response);
-				flipOut();
 			}
 			
 			else if(response.equals("dessert")) {
 				ChatbotMain.print("What dessert food in particular?");
 				discussDessert(response);
-				flipOut();
 			}
 			else {
+				flipOut();
 				ChatbotMain.print("I can do breakfast, lunch, dinner, or dessert. Stupid child.");
 			}
 		}
-		ChatbotMain.print("Waste of my time." + Chatbot.getUsername() + "!");
-		ChatbotMain.chatbot.startChatting();
 		
 		if(Chatbot.angerLvl >= 15) {
 			ChatbotMain.print("There's no point in having a conversation if you're not going to listen to what I say.");
@@ -88,7 +83,11 @@ public class ChatbotTristan implements Topic {
 		else {
 			System.out.println("Sorry, we don't serve garbage here. For breakfast, I could show you EGGS, HASH BROWNS, or PANCAKES.");
 		}
-	}
+		
+		needHelp();
+		
+		}
+	
 	
 	private void discussLunch(String response) {
 		response = ChatbotMain.getInput().toLowerCase();
@@ -105,7 +104,11 @@ public class ChatbotTristan implements Topic {
 		else {
 			System.out.println("Sorry, we don't serve garbage here. Or you can't spell. For lunch, I have time to teach PIZZA, MAC N CHEESE, or SPAGHETTI.");
 		}
-	}
+		
+		needHelp();
+		
+		}
+	
 	
 	private void discussDinner(String response) {
 		response = ChatbotMain.getInput().toLowerCase();
@@ -122,7 +125,11 @@ public class ChatbotTristan implements Topic {
 		else {
 			System.out.println("Sorry, we don't serve garbage here. Maybe you can't speak english. For dinner, we could do CHICKEN, GNOCCHI, or SALMON.");
 		}
-	}
+		
+		needHelp();
+		
+		}
+	
 	
 	private void discussDessert(String response) {
 		response = "ChatbotMain.getInput";
@@ -138,7 +145,11 @@ public class ChatbotTristan implements Topic {
 		else {
 			System.out.println("Sorry, we don't serve garbage here. Or you're just stupid. For dessert I can do TART, BROWNIES, or PIE");
 		}
-	}
+		
+		needHelp();
+		
+		}
+	
 	
 	public static String findKeywords(String searchString, String[] keywords, int startPsn) {
 		for(int i = 0; i < keywords.length; i++) {
@@ -152,6 +163,15 @@ public class ChatbotTristan implements Topic {
 	public void flipOut() {
 		((ChatbotJohnson)Chatbot.getJohnson()).throwInsult();
 		Chatbot.getAngry();
+	}
+	
+	public void needHelp() {
+		ChatbotMain.print("Do you still need my assistance?");
+		response = ChatbotMain.getInput().toLowerCase();
+		if(response.equals("no")) {
+			ChatbotMain.print("Waste of my time.");
+			System.exit(0);
+		}
 	}
 	
 	public boolean isTriggered(String response) {
