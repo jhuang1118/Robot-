@@ -71,6 +71,10 @@ public class ChatbotJohnson implements Topic {
 			if(wei.isTriggered(response)) {
 				wei.talk(response);
 			}
+			else {
+				ChatbotMain.print("I can show you recipes or rate restaurants.");
+				response = ChatbotMain.getInput();
+			}
 		} 
 			Chatbot.angerLvl += 3;
 			ChatbotMain.print("Stop talking about things I don't know! Talk about cooking or rating restaurants");
