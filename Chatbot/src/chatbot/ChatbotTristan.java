@@ -20,24 +20,28 @@ public class ChatbotTristan implements Topic {
 	
 	public void talk(String response) {
 		
-		ChatbotMain.print("What do you want?");
+		ChatbotMain.print("I need the meal stupid.");
 		response = ChatbotMain.getInput().toLowerCase();
 		
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1 && Chatbot.angerLvl < 15) {
 			
 			if(response.equals("breakfast")) {
+				ChatbotMain.print("What breakfast food in particular?");
 				discussBreakfast(response);
 			}
 			
 			if(response.equals("lunch")) {
+				ChatbotMain.print("What lunch food in particular?");
 				discussLunch(response);
 			}
 			
 			if(response.equals("dinner")) {
+				ChatbotMain.print("What dinner food in particular?");
 				discussDinner(response);
 			}
 			
 			if(response.equals("dessert")) {
+				ChatbotMain.print("What dessert food in particular?");
 				discussDessert(response);
 			}
 		}
@@ -63,10 +67,9 @@ public class ChatbotTristan implements Topic {
 	}
 	
 	private void discussBreakfast(String response) {
-		ChatbotMain.print("What breakfast food in particular?");
 		response = ChatbotMain.getInput().toLowerCase();
 		
-		if(ChatbotMain.findKeyword(response, Breakfast[0], 0) >= 0){
+		if(response.equals("eggs")){
 			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/north-african-eggs/");
 		}
 		if(ChatbotMain.findKeyword(response, Breakfast[1], 0) >= 0){
@@ -81,7 +84,6 @@ public class ChatbotTristan implements Topic {
 	}
 	
 	private void discussLunch(String response) {
-		ChatbotMain.print("What lunch food in particular?");
 		response = ChatbotMain.getInput().toLowerCase();
 		
 		if(ChatbotMain.findKeyword(response, Lunch[0], 0) >= 0) {
@@ -99,7 +101,6 @@ public class ChatbotTristan implements Topic {
 	}
 	
 	private void discussDinner(String response) {
-		ChatbotMain.print("What dinner food in particular?");
 		response = ChatbotMain.getInput().toLowerCase();
 		
 		if(ChatbotMain.findKeyword(response, Dinner[0], 0) >= 0) {
@@ -117,7 +118,6 @@ public class ChatbotTristan implements Topic {
 	}
 	
 	private void discussDessert(String response) {
-		ChatbotMain.print("What dessert food in particular?");
 		response = "ChatbotMain.getInput";
 		if(ChatbotMain.findKeyword(response, Dessert[0], 0) >= 0) {
 			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/indulgent-mini-chocolate-tarts-with-peanut-brittle/");
