@@ -61,7 +61,7 @@ public class ChatbotJohnson implements Topic {
 	
 	
 	public void talk(String response) {
-		ChatbotMain.print("What do you want? I'm busy, I have to catch my plane to cook for the Nigerian Prince!");
+		ChatbotMain.print("What do you want, "+ Chatbot.getUsername() + "? I'm busy, I have to catch my plane to cook for the Nigerian Prince!");
 		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1) {
 			isTriggered(response);
