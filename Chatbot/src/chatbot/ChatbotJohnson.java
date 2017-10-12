@@ -38,7 +38,7 @@ public class ChatbotJohnson implements Topic {
 		insults9 = temp9;
 		insults12 = temp12;
 		insults15 = temp15;
-		
+		//
 		String[][] tempAll = {insults0,insults3,insults6,insults9,insults12,insults15};
 		allInsults = tempAll;
 		
