@@ -50,7 +50,7 @@ public class ChatBotWei implements Topic {
 			}
 			
 			if(response.equals("no")) {
-				ChatbotMain.print("bye");
+				ChatbotMain.print("Very well, you've wasted my time long enough time to go catch my flight!");
 				System.exit(0);
 			}
 			else if(Chatbot.getTristan().isTriggered(response)) {
