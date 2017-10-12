@@ -20,7 +20,7 @@ public class ChatbotTristan implements Topic {
 	
 	public void talk(String response) {
 		
-		ChatbotMain.print("I need the meal stupid.");
+		ChatbotMain.print("What meal " + Chatbot.getUsername() + "?");
 		response = ChatbotMain.getInput().toLowerCase();
 		
 		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1 && Chatbot.angerLvl < 15) {
@@ -28,21 +28,28 @@ public class ChatbotTristan implements Topic {
 			if(response.equals("breakfast")) {
 				ChatbotMain.print("What breakfast food in particular?");
 				discussBreakfast(response);
+				flipOut();
 			}
 			
-			if(response.equals("lunch")) {
+			else if(response.equals("lunch")) {
 				ChatbotMain.print("What lunch food in particular?");
 				discussLunch(response);
+				flipOut();
 			}
 			
-			if(response.equals("dinner")) {
+			else if(response.equals("dinner")) {
 				ChatbotMain.print("What dinner food in particular?");
 				discussDinner(response);
+				flipOut();
 			}
 			
-			if(response.equals("dessert")) {
+			else if(response.equals("dessert")) {
 				ChatbotMain.print("What dessert food in particular?");
 				discussDessert(response);
+				flipOut();
+			}
+			else {
+				ChatbotMain.print("I can do breakfast, lunch, dinner, or dessert. Stupid child.");
 			}
 		}
 		ChatbotMain.print("Waste of my time." + Chatbot.getUsername() + "!");
@@ -70,16 +77,16 @@ public class ChatbotTristan implements Topic {
 		response = ChatbotMain.getInput().toLowerCase();
 		
 		if(response.equals("eggs")){
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/north-african-eggs/");
+			System.out.println("https://www.gordonramsay.com/gr/recipes/north-african-eggs/");
 		}
-		if(ChatbotMain.findKeyword(response, Breakfast[1], 0) >= 0){
-			ChatbotMain.print("http://www.independent.co.uk/life-style/food-and-drink/gordon-ramsay-eggs-baked-hash-browns-bacon-recipe-ingredients-cooking-instructions-how-to-make-a7952591.html");
+		else if(ChatbotMain.findKeyword(response, Breakfast[1], 0) >= 0){
+			System.out.println("http://www.independent.co.uk/life-style/food-and-drink/gordon-ramsay-eggs-baked-hash-browns-bacon-recipe-ingredients-cooking-instructions-how-to-make-a7952591.html");
 		}
-		if(ChatbotMain.findKeyword(response, Breakfast[2], 0) >= 0){
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/coconut-pancakes-with-mango-slices-and-lime-syrup/");
+		else if(ChatbotMain.findKeyword(response, Breakfast[2], 0) >= 0){
+			System.out.println("https://www.gordonramsay.com/gr/recipes/coconut-pancakes-with-mango-slices-and-lime-syrup/");
 		}
 		else {
-			ChatbotMain.print("Sorry, we don't serve garbage here. For breakfast, I could show you EGGS, HASH BROWNS, or PANCAKES.");
+			System.out.println("Sorry, we don't serve garbage here. For breakfast, I could show you EGGS, HASH BROWNS, or PANCAKES.");
 		}
 	}
 	
@@ -87,16 +94,16 @@ public class ChatbotTristan implements Topic {
 		response = ChatbotMain.getInput().toLowerCase();
 		
 		if(ChatbotMain.findKeyword(response, Lunch[0], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/mozzarella-and-rosemary-pizza/");
+			System.out.println("https://www.gordonramsay.com/gr/recipes/mozzarella-and-rosemary-pizza/");
 		}
-		if(ChatbotMain.findKeyword(response, Lunch[1], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/macaroni-and-cauliflower-bake-with-three-cheeses/");
+		else if(ChatbotMain.findKeyword(response, Lunch[1], 0) >= 0) {
+			System.out.println("https://www.gordonramsay.com/gr/recipes/macaroni-and-cauliflower-bake-with-three-cheeses/");
 		}
-		if(ChatbotMain.findKeyword(response, Lunch[2], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/cornish-seaside-sausage-spaghetti/");
+		else if(ChatbotMain.findKeyword(response, Lunch[2], 0) >= 0) {
+			System.out.println("https://www.gordonramsay.com/gr/recipes/cornish-seaside-sausage-spaghetti/");
 		}
 		else {
-		ChatbotMain.print("Sorry, we don't serve garbage here. Or you can't spell. For lunch, I have time to teach PIZZA, MAC N CHEESE, or SPAGHETTI.");
+			System.out.println("Sorry, we don't serve garbage here. Or you can't spell. For lunch, I have time to teach PIZZA, MAC N CHEESE, or SPAGHETTI.");
 		}
 	}
 	
@@ -104,32 +111,32 @@ public class ChatbotTristan implements Topic {
 		response = ChatbotMain.getInput().toLowerCase();
 		
 		if(ChatbotMain.findKeyword(response, Dinner[0], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/roast-chicken-with-chickpea-stuffing-and-big-green-salad/");
+			System.out.println("https://www.gordonramsay.com/gr/recipes/roast-chicken-with-chickpea-stuffing-and-big-green-salad/");
 		}
-		if(ChatbotMain.findKeyword(response, Dinner[1], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/home-made-gnocchi/");
+		else if(ChatbotMain.findKeyword(response, Dinner[1], 0) >= 0) {
+			System.out.println("https://www.gordonramsay.com/gr/recipes/home-made-gnocchi/");
 		}
-		if(ChatbotMain.findKeyword(response, Dinner[2], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/teriyaki-salmon/");
+		else if(ChatbotMain.findKeyword(response, Dinner[2], 0) >= 0) {
+			System.out.println("https://www.gordonramsay.com/gr/recipes/teriyaki-salmon/");
 		}
 		else {
-			ChatbotMain.print("Sorry, we don't serve garbage here. Maybe you can't speak english. For dinner, we could do CHICKEN, GNOCCHI, or SALMON.");
+			System.out.println("Sorry, we don't serve garbage here. Maybe you can't speak english. For dinner, we could do CHICKEN, GNOCCHI, or SALMON.");
 		}
 	}
 	
 	private void discussDessert(String response) {
 		response = "ChatbotMain.getInput";
 		if(ChatbotMain.findKeyword(response, Dessert[0], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsay.com/gr/recipes/indulgent-mini-chocolate-tarts-with-peanut-brittle/");
+			System.out.println("https://www.gordonramsay.com/gr/recipes/indulgent-mini-chocolate-tarts-with-peanut-brittle/");
 		}
-		if(ChatbotMain.findKeyword(response, Dessert[1], 0) >= 0) {
-			ChatbotMain.print("https://www.gordonramsayrestaurants.com/recipes/worlds-best-brownies/");
+		else if(ChatbotMain.findKeyword(response, Dessert[1], 0) >= 0) {
+			System.out.println("https://www.gordonramsayrestaurants.com/recipes/worlds-best-brownies/");
 		}
-		if(ChatbotMain.findKeyword(response, Dessert[2], 0) >= 0) {
-			ChatbotMain.print("This is how you make ");
+		else if(ChatbotMain.findKeyword(response, Dessert[2], 0) >= 0) {
+			System.out.println("https://www.gordonramsay.com/gr/recipes/cranberry-mince-pies/");
 		}
 		else {
-			ChatbotMain.print("Sorry, we don't serve garbage here. Or you're just stupid. For dinner, we could do CHICKEN, GNOCCHI, or SALMON.");
+			System.out.println("Sorry, we don't serve garbage here. Or you're just stupid. For dessert I can do TART, BROWNIES, or PIE");
 		}
 	}
 	
